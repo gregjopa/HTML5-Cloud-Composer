@@ -1,77 +1,116 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset='utf-8'>
+<title>HTML5 Cloud Composer</title>
+<meta charset=utf-8 />
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>GregJ/HTML5-Cloud-Composer @ GitHub</title>
+<!--Vexflow-->
+<script src="js/jquery-1.6.2.min.js"></script>
+<script src="js/vexflow.js"></script>
 
-  <style type="text/css">
-    body {
-      margin-top: 1.0em;
-      background-color: #4f046c;
-      font-family: Helvetica, Arial, FreeSans, san-serif;
-      color: #ffffff;
-    }
-    #container {
-      margin: 0 auto;
-      width: 700px;
-    }
-    h1 { font-size: 3.8em; color: #b0fb93; margin-bottom: 3px; }
-    h1 .small { font-size: 0.4em; }
-    h1 a { text-decoration: none }
-    h2 { font-size: 1.5em; color: #b0fb93; }
-    h3 { text-align: center; color: #b0fb93; }
-    a { color: #b0fb93; }
-    .description { font-size: 1.2em; margin-bottom: 30px; margin-top: 30px; font-style: italic;}
-    .download { float: right; }
-    pre { background: #000; color: #fff; padding: 15px;}
-    hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
-    .footer { text-align:center; padding-top:30px; font-style: italic; }
-  </style>
+<!-- Audiolet.js for audio synthesis-->
+<script src="js/audio/Audiolet.min.js"></script>
+<script src="js/audio/scheduling.js"></script>
+
+<!--music.js for frequency calculation -->
+<script src="js/audio/music.js"></script>
+
+<!--jQuery plugin to throttle slider event-->
+<script src="js/jquery.ba-throttle-debounce.min.js"></script>
+
+<!--jQuery Mobile Framework-->
+<link rel="stylesheet" href="css/jquery.mobile-1.0b2.min.css" />
+<script src="js/jquery.mobile-1.0b2.min.js"></script>
+
+<!--custom script-->
+<script src="js/cloud-composer.js"></script>
+
+<!--custom style-->
+<link rel="stylesheet" href="css/style.css" />
+
 </head>
 
 <body>
-  <a href="http://github.com/GregJ/HTML5-Cloud-Composer"><img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub" /></a>
+<div data-role="page">
 
-  <div id="container">
+	<div data-role="header" data-theme="b">
+		<h1>HTML5 Cloud Composer</h1>
+	</div>
+	
+	<div data-role="content">
+		<div class="content-primary center-wrapper">
+					
+			<canvas id="score" height="175" width="600"></canvas>
+			<div data-role="fieldcontain">
+				<input type="range" name="canvas-slider" id="canvas-slider" value="0" min="0" max="550"  />
+			</div>
+			
+			<div id="audioControls" style="display: none;">
+				<br />
+				<div data-role="fieldcontain">
+					<button id="playAudio" data-theme="b" data-inline="true">play audio</button>
+				</div>
+			</div>
+			
+		</div>
+		
+		<div class="content-secondary">
+		
+			<div data-role="fieldcontain">
+				<label for="select-note-name" class="select">note name:</label>
+				<select name="select-note-name" id="select-note-name" data-native-menu="false">
+					<option value="A">A</option>
+					<option value="B">B</option>
+					<option value="C">C</option>
+					<option value="D">D</option>
+					<option value="E">E</option>
+					<option value="F">F</option>
+					<option value="G">G</option>
+				</select>
+			</div>
+			
+			<div data-role="fieldcontain">
+				<label for="select-note-accidental" class="select">accidental:</label>
+				<select name="select-note-accidental" id="select-note-accidental" data-native-menu="false">
+					<option value="none">none</option>
+					<option value="#">sharp</option>
+					<option value="b">flat</option>
+				</select>
+			</div>
 
-    <div class="download">
-      <a href="http://github.com/GregJ/HTML5-Cloud-Composer/zipball/master">
-        <img border="0" width="90" src="http://github.com/images/modules/download/zip.png"></a>
-      <a href="http://github.com/GregJ/HTML5-Cloud-Composer/tarball/master">
-        <img border="0" width="90" src="http://github.com/images/modules/download/tar.png"></a>
-    </div>
+			<div data-role="fieldcontain">
+				<label for="select-note-octave" class="select">octave:</label>
+				<select name="select-note-octave" id="select-note-octave" data-native-menu="false">
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="5">5</option>
+				</select>
+			</div>
 
-    <h1><a href="http://github.com/GregJ/HTML5-Cloud-Composer">HTML5-Cloud-Composer</a>
-      <span class="small">by <a href="http://github.com/GregJ">GregJ</a></span></h1>
-
-    <div class="description">
-      a sheet music editor developed with Vexflow and jQuery Mobile
-    </div>
-
-    <h2>Authors</h2>
-<p>Greg Jopa (grjopa@gmail.com)<br/><br/>      </p>
-<h2>Contact</h2>
-<p>Greg Jopa (grjopa@gmail.com)<br/>      </p>
-
-
-    <h2>Download</h2>
-    <p>
-      You can download this project in either
-      <a href="http://github.com/GregJ/HTML5-Cloud-Composer/zipball/master">zip</a> or
-      <a href="http://github.com/GregJ/HTML5-Cloud-Composer/tarball/master">tar</a> formats.
-    </p>
-    <p>You can also clone the project with <a href="http://git-scm.com">Git</a>
-      by running:
-      <pre>$ git clone git://github.com/GregJ/HTML5-Cloud-Composer</pre>
-    </p>
-
-    <div class="footer">
-      get the source code on GitHub : <a href="http://github.com/GregJ/HTML5-Cloud-Composer">GregJ/HTML5-Cloud-Composer</a>
-    </div>
-
-  </div>
-
-  
+			<div data-role="fieldcontain">
+				<label for="select-note-duration" class="select">duration:</label>
+				<select name="select-note-duration" id="select-note-duration" data-native-menu="false">
+					<option value="16">sixteenth</option>
+					<option value="8">eighth</option>
+					<option value="q">quarter</option>
+					<option value="h">half</option>
+					<option value="w">whole</option>
+				</select>
+			</div>			
+			<fieldset class="ui-grid-a">
+				<div class="ui-block-a"><button id="deleteNote" data-theme="c">delete note</button></div>
+				<div class="ui-block-b"><button id="addNote" data-theme="b">add/edit note</button></div>
+			</fieldset>
+	
+		</div>
+		
+	</div>
+	
+	<div data-role="footer" class="footer-docs" data-theme="c">
+		<p>Cloud Composer app originally designed during Google's HTML5 Hackathon in Chicago (August 2011)</p>
+	</div>	
+	
+</div>	
 </body>
 </html>

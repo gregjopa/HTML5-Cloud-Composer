@@ -1,0 +1,52 @@
+
+body { background: #dddddd; }
+
+canvas {
+	background: #EED;
+	border: 10px solid #DDDDCC;
+}
+
+input.ui-slider-input {
+	display: none;
+}
+
+.center-wrapper{
+	text-align: center;
+}
+
+.center-wrapper * {
+	margin: 0 auto;
+}
+
+.footer-docs {
+	padding: 5px 0;
+}
+.footer-docs p {
+	text-align: center;
+	margin-left:15px;
+	font-weight: normal;
+	font-size: .9em;
+}
+
+.content-secondary {
+	margin-bottom: 20px;
+}
+
+
+/* responsive layout w/ css media queries */
+
+@media all and (min-width: 1000px){
+
+	.content-secondary {
+		text-align: left;
+		float: left;
+		width: 34%;
+		margin-right: 1%;
+	}
+
+	.content-primary {
+		width: 64%;
+		float: right;
+	}
+
+}
