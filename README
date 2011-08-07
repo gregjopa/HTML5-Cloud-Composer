@@ -1,0 +1,8 @@
+This HTML5 Cloud Composer app was originally designed during Google's HTML5 Hackathon in Chicago in August 2011.
+
+We attempted to develop something similar to the "Maestro" app for Android using HTML5 technologies.
+Maestro app: https://market.android.com/details?id=com.revelli.maestro
+
+With this app you can add/edit/delete notes. Just click on a note to select it for editing.
+
+With Firefox 4+ or Chrome with the web audio api enabled you should see a play button in the app for playing the audio for the full score.
