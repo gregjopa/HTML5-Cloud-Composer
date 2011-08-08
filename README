@@ -1,10 +1,20 @@
 demo: http://gregj.github.com/HTML5-Cloud-Composer/
 
+blog post with more details: http://www.gregjopa.com/2011/08/html5-cloud-composer-app/
+
 This HTML5 Cloud Composer app was originally designed during Google's HTML5 Hackathon in Chicago in August 2011.
 
 We attempted to develop something similar to the "Maestro" app for Android using HTML5 technologies.
 Maestro app: https://market.android.com/details?id=com.revelli.maestro
 
-With this app you can add/edit/delete notes. Just click on a note to select it for editing.
 
-With Firefox 4+ or Chrome with the web audio api enabled you should see a play button in the app for playing the audio for the full score.
+Cloud Composer app features:
+
+Add Note – use the select menus to choose the note name, accidental, octave, and duration for a note and then click the add/edit note button to add the new note to the canvas. The red cursor needs to be highlighting the next available spot on the canvas in order to add a new note. You can click to the right of the last existing note on the canvas to select the next available spot.
+
+Edit Note – click on an existing note on the canvas to select it for editing. Then use the select menus to set the note details and click the add/edit note button to update the note.
+
+Scroll Sheet Music – move the slider from left to right to horizontally scroll the sheet music.
+
+Play Audio – If your browser is Firefox 4+ or a version of Chrome with the web audio api enabled you should see a play audio button in the app for playing the audio for the composed score. If your browser does not support the new audio apis then the play audio button will be hidden.
+
